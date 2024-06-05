@@ -1,56 +1,42 @@
 /*
-   MSync
-   SWR EXPERIMENTALSTUDIO 
-   Maurice Oeser
-   2023
-*/
-
-
-/*
    SmartSync  
    SWR EXPERIMENTALSTUDIO 
    Maurice Oeser
-   2023
+   2024
 */
 
 // **************** Server setup ****************************
-const Max = require('max-api');
 
-Max.addHandler("test", () => {
-  Max.outlet("heureka");
-});
+
+// MaxMSP node setup
+const Max = require('max-api');
 
 
 Max.addHandler("mode", (mode) => {
   switchMode(mode);
 });
 
+
+// standard express HTTP Server setup with socket.io
 const express = require('express');
 const app = express();
 const http = require('http');
 const server = http.createServer(app);
 const { Server } = require("socket.io");
 const io = new Server(server);
+
+// timesync server to synchronize the devices
 const timesyncServer = require('timesync/server');
 
+app.use(express.static('public'));
+app.use('/timesync', timesyncServer.requestHandler);
 app.get('/', (req, res) => {
   res.sendFile(__dirname + '/public/index.html');
 });
 
-app.use(express.static('public'));
-app.use('/timesync', timesyncServer.requestHandler);
-
-
 server.listen(3000, () => {
   console.log('listening on *:3000');
 });
-
-/*
-  If a user connects without a voiceID set, we give him an "anonymous" voiceID.
-  To avoid collision with a real voiceID, we start at > maximum Users expected.
-  If there is ever a project with more than 1000 voiceIDs set, this number needs to be adjusted.
-*/
-let anonymousClientCounter = 1001; 
 
 
 // **********************************************************
@@ -62,8 +48,6 @@ let PIECE_DURATION = 54864;
 let isPlaying = false;
 
 
-
-
 // ********************** Socket.IO *************************
 io.on('connection', (socket) => {
 
@@ -71,7 +55,7 @@ io.on('connection', (socket) => {
   
   if(isNaN(voiceid))
   {
-    voiceid = anonymousClientCounter++;
+    //voiceid = anonymousClientCounter++;
   }
     
   socket.voiceid = voiceid;  
@@ -96,11 +80,6 @@ io.on('connection', (socket) => {
 
 });
 
-
-
-
-
-
 let currentMode = 0;
 
 function switchMode(mode)
@@ -122,9 +101,6 @@ function switchMode(mode)
 
 
 // ======================= OSC ADMIN CONTROL =======================
-
-let waveClientIndex = 0;
-
 const OSCserver = require('node-osc').Server;
 const OSCClient = require('node-osc').Client;
 
