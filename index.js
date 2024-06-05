@@ -11,7 +11,6 @@
 // MaxMSP node setup
 const Max = require('max-api');
 
-
 Max.addHandler("mode", (mode) => {
   switchMode(mode);
 });

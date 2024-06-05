@@ -10,7 +10,7 @@
 		}
 ,
 		"classnamespace" : "box",
-		"rect" : [ 395.0, 317.0, 848.0, 516.0 ],
+		"rect" : [ 395.0, 317.0, 438.0, 176.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 1,
 		"default_fontsize" : 12.0,
@@ -39,6 +39,18 @@
 		"subpatcher_template" : "",
 		"assistshowspatchername" : 0,
 		"boxes" : [ 			{
+				"box" : 				{
+					"id" : "obj-28",
+					"linecount" : 2,
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 11.875, 16.0, 237.0, 33.0 ],
+					"text" : "Ableton Surround Panner by Robert Henke. adapted for Max standalone use"
+				}
+
+			}
+, 			{
 				"box" : 				{
 					"id" : "obj-32",
 					"maxclass" : "newobj",
@@ -78,7 +90,7 @@
 				"box" : 				{
 					"comment" : "",
 					"id" : "obj-18",
-					"index" : 8,
+					"index" : 0,
 					"maxclass" : "outlet",
 					"numinlets" : 1,
 					"numoutlets" : 0,
@@ -90,7 +102,7 @@
 				"box" : 				{
 					"comment" : "",
 					"id" : "obj-21",
-					"index" : 7,
+					"index" : 0,
 					"maxclass" : "outlet",
 					"numinlets" : 1,
 					"numoutlets" : 0,
@@ -102,7 +114,7 @@
 				"box" : 				{
 					"comment" : "",
 					"id" : "obj-16",
-					"index" : 6,
+					"index" : 0,
 					"maxclass" : "outlet",
 					"numinlets" : 1,
 					"numoutlets" : 0,
@@ -114,7 +126,7 @@
 				"box" : 				{
 					"comment" : "",
 					"id" : "obj-14",
-					"index" : 5,
+					"index" : 0,
 					"maxclass" : "outlet",
 					"numinlets" : 1,
 					"numoutlets" : 0,
@@ -126,7 +138,7 @@
 				"box" : 				{
 					"comment" : "",
 					"id" : "obj-11",
-					"index" : 4,
+					"index" : 0,
 					"maxclass" : "outlet",
 					"numinlets" : 1,
 					"numoutlets" : 0,
@@ -138,7 +150,7 @@
 				"box" : 				{
 					"comment" : "",
 					"id" : "obj-9",
-					"index" : 3,
+					"index" : 0,
 					"maxclass" : "outlet",
 					"numinlets" : 1,
 					"numoutlets" : 0,
@@ -150,7 +162,7 @@
 				"box" : 				{
 					"comment" : "",
 					"id" : "obj-8",
-					"index" : 2,
+					"index" : 0,
 					"maxclass" : "outlet",
 					"numinlets" : 1,
 					"numoutlets" : 0,
@@ -162,7 +174,7 @@
 				"box" : 				{
 					"comment" : "",
 					"id" : "obj-5",
-					"index" : 1,
+					"index" : 0,
 					"maxclass" : "outlet",
 					"numinlets" : 1,
 					"numoutlets" : 0,
@@ -186,11 +198,11 @@
 				"box" : 				{
 					"comment" : "audio 2",
 					"id" : "obj-158",
-					"index" : 2,
+					"index" : 0,
 					"maxclass" : "inlet",
 					"numinlets" : 0,
 					"numoutlets" : 1,
-					"outlettype" : [ "signal" ],
+					"outlettype" : [ "" ],
 					"patching_rect" : [ 128.5, 669.0, 30.0, 30.0 ]
 				}
 
@@ -199,11 +211,11 @@
 				"box" : 				{
 					"comment" : "audio 1",
 					"id" : "obj-157",
-					"index" : 1,
+					"index" : 0,
 					"maxclass" : "inlet",
 					"numinlets" : 0,
 					"numoutlets" : 1,
-					"outlettype" : [ "signal" ],
+					"outlettype" : [ "" ],
 					"patching_rect" : [ 88.5, 669.0, 30.0, 30.0 ]
 				}
 
@@ -212,7 +224,7 @@
 				"box" : 				{
 					"comment" : "control",
 					"id" : "obj-156",
-					"index" : 3,
+					"index" : 0,
 					"maxclass" : "inlet",
 					"numinlets" : 0,
 					"numoutlets" : 1,
@@ -3400,7 +3412,7 @@
 					"outlettype" : [ "float", "int" ],
 					"patching_rect" : [ 594.799987999999985, 813.0, 5.0, 100.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 334.0, 28.0, 5.0, 83.0 ]
+					"presentation_rect" : [ 329.0, 75.076920000000001, 5.0, 83.0 ]
 				}
 
 			}
@@ -3416,7 +3428,7 @@
 					"outlettype" : [ "float", "int" ],
 					"patching_rect" : [ 563.248962000000006, 813.0, 5.0, 100.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 328.0, 28.0, 5.0, 83.0 ]
+					"presentation_rect" : [ 323.0, 75.076920000000001, 5.0, 83.0 ]
 				}
 
 			}
@@ -3432,7 +3444,7 @@
 					"outlettype" : [ "float", "int" ],
 					"patching_rect" : [ 531.697937000000024, 813.0, 5.0, 100.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 322.0, 28.0, 5.0, 83.0 ]
+					"presentation_rect" : [ 317.0, 75.076920000000001, 5.0, 83.0 ]
 				}
 
 			}
@@ -3448,7 +3460,7 @@
 					"outlettype" : [ "float", "int" ],
 					"patching_rect" : [ 500.146942000000024, 813.0, 5.0, 100.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 316.0, 28.0, 5.0, 83.0 ]
+					"presentation_rect" : [ 311.0, 75.076920000000001, 5.0, 83.0 ]
 				}
 
 			}
@@ -3464,7 +3476,7 @@
 					"outlettype" : [ "float", "int" ],
 					"patching_rect" : [ 468.595916999999986, 813.0, 5.0, 100.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 309.0, 28.0, 5.0, 83.0 ]
+					"presentation_rect" : [ 304.0, 75.076920000000001, 5.0, 83.0 ]
 				}
 
 			}
@@ -3480,7 +3492,7 @@
 					"outlettype" : [ "float", "int" ],
 					"patching_rect" : [ 437.044921999999985, 813.0, 5.0, 100.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 303.0, 28.0, 5.0, 83.0 ]
+					"presentation_rect" : [ 298.0, 75.076920000000001, 5.0, 83.0 ]
 				}
 
 			}
@@ -3496,7 +3508,7 @@
 					"outlettype" : [ "float", "int" ],
 					"patching_rect" : [ 405.493896000000007, 813.0, 5.0, 100.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 296.0, 28.0, 5.0, 83.0 ]
+					"presentation_rect" : [ 291.0, 75.076920000000001, 5.0, 83.0 ]
 				}
 
 			}
@@ -3512,7 +3524,7 @@
 					"outlettype" : [ "float", "int" ],
 					"patching_rect" : [ 373.942871000000025, 813.0, 5.0, 100.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 290.0, 28.0, 5.0, 83.0 ]
+					"presentation_rect" : [ 285.0, 75.076920000000001, 5.0, 83.0 ]
 				}
 
 			}
@@ -3877,7 +3889,7 @@
 					"numoutlets" : 0,
 					"patching_rect" : [ 1415.5, 391.5, 106.0, 18.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 271.0, 5.0, 81.0, 18.0 ],
+					"presentation_rect" : [ 273.0, 8.0, 81.0, 18.0 ],
 					"text" : "Speaker Setup",
 					"textcolor" : [ 1.0, 1.0, 1.0, 0.46 ]
 				}
@@ -3945,7 +3957,7 @@
 					"parameter_enable" : 1,
 					"patching_rect" : [ 720.5, 46.0, 100.0, 15.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 340.0, 6.0, 74.0, 15.0 ],
+					"presentation_rect" : [ 274.5, 28.0, 74.0, 15.0 ],
 					"saved_attribute_attributes" : 					{
 						"activebgcolor" : 						{
 							"expression" : ""
@@ -4113,7 +4125,7 @@
 					"numoutlets" : 0,
 					"patching_rect" : [ 1137.0, 46.0, 128.0, 128.0 ],
 					"presentation" : 1,
-					"presentation_rect" : [ 260.5, 2.0, 157.0, 166.0 ]
+					"presentation_rect" : [ 262.0, 4.0, 161.0, 166.0 ]
 				}
 
 			}
@@ -4769,7 +4781,43 @@
 				}
 
 			}
- ]
+ ],
+		"parameters" : 		{
+			"obj-128" : [ "Rotation", "Rotation", 0 ],
+			"obj-143" : [ "X-Axis", "X-Axis", 0 ],
+			"obj-27" : [ "SpeakerPositions", "SpeakerPos", 0 ],
+			"obj-3" : [ "Smooth", "Smooth", 0 ],
+			"obj-37" : [ "Focus", "Focus", 0 ],
+			"obj-38" : [ "Y-Axis", "Y-Axis", 0 ],
+			"obj-6" : [ "Center", "Center", 0 ],
+			"parameterbanks" : 			{
+				"0" : 				{
+					"index" : 0,
+					"name" : "",
+					"parameters" : [ "-", "-", "-", "-", "-", "-", "-", "-" ]
+				}
+
+			}
+,
+			"inherited_shortname" : 1
+		}
+,
+		"dependency_cache" : [ 			{
+				"name" : "speakers.js",
+				"bootpath" : "~/Documents/GitHub/SmartSync",
+				"patcherrelativepath" : ".",
+				"type" : "TEXT",
+				"implicit" : 1
+			}
+, 			{
+				"name" : "xypad.js",
+				"bootpath" : "~/Documents/GitHub/SmartSync",
+				"patcherrelativepath" : ".",
+				"type" : "TEXT",
+				"implicit" : 1
+			}
+ ],
+		"autosave" : 0
 	}
 
 }
