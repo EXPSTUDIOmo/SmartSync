@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>SMART-SYNC</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon_io/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon_io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon_io/favicon-16x16.png">
+    <link rel="manifest" href="/favicon_io/site.webmanifest">
+    <link href="/css/output.css" rel="stylesheet">
+    <script type="text/javascript" src="/js/socket.io.js"></script>
+    <script type="text/javascript" src="/js/howler.min.js"></script>
+    <script src="js/NoSleep.min.js"></script>
+    <script src="js/timesync.js"></script>
+    <script defer src="/js/client.js" type="module"></script>
+  </head>
+  <body class="background">
+    <div> 
+      <div id="startscreen" class="h-screen flex items-center justify-center">
+        <img style="position: absolute; top: 2rem" src="exp_logo.jpg" width="80%">
+        <button id="syncbtn">CONNECT</button>
+      </div>
+      <div id="content_mode0" class="h-screen flex items-center justify-center">
+        <div id="grid" class="grid grid-cols-4 gap-4">
+          <button class="playbtn btn1" id="playbtn1"></button>
+          <button class="playbtn btn2" id="playbtn2"></button>
+          <button class="playbtn btn3" id="playbtn3"></button>
+          <button class="playbtn btn4" id="playbtn4"></button>
+          <button class="playbtn btn5" id="playbtn5"></button>
+          <button class="playbtn btn6" id="playbtn6"></button>
+          <button class="playbtn btn7" id="playbtn7"></button>
+          <button class="playbtn btn8" id="playbtn8"></button>
+          <button class="playbtn btn9" id="playbtn9"></button>
+          <button class="playbtn btn10" id="playbtn10"></button>
+          <button class="playbtn btn11" id="playbtn11"></button>
+          <button class="playbtn btn12" id="playbtn12"></button>
+          <button class="playbtn btn13" id="playbtn13"></button>
+          <button class="playbtn btn14" id="playbtn14"></button>
+          <button class="playbtn btn15" id="playbtn15"></button>
+          <button class="playbtn btn16" id="playbtn16"></button>
+        </div>
+      </div>
+
+      <div id="content_mode1" class="h-screen flex items-center justify-center">
+        <div id="grid" class="grid grid-cols-3 gap-2">
+          <button class="playbtn btn1" id="playbtn17"></button>
+          <button class="playbtn btn2" id="playbtn18"></button>
+          <button class="playbtn btn3" id="playbtn19"></button>
+          <button class="playbtn btn4" id="playbtn20"></button>
+          <button class="playbtn btn5" id="playbtn21"></button>
+          <button class="playbtn btn6" id="playbtn22"></button>
+          <button class="playbtn btn7" id="playbtn23"></button>
+          <button class="playbtn btn8" id="playbtn24"></button>
+          <button class="playbtn btn9" id="playbtn25"></button>
+        </div>
+      </div>
+
+
+    </div>
+  </body>
+</html>
