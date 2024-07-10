@@ -2,8 +2,7 @@
    SWR EXPERIMENTALSTUDIO 03/2023
    Maurice Oeser
 
-   Scheduler - handles high precision firing of events by spinning before an event.
-   setTimeout / setInterval are too inaccurate
+   SmartSync Scheduler - handles high precision firing of events by spinning before an event.
 */
 
 const spinTime = 25;

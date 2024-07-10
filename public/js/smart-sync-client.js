@@ -72,11 +72,15 @@ class SmartSyncClient
             this.serverStartTime = time;
             this.debug(`--- Server Start-Time changed : ${time} ---`);
         });
+
+        this.socket .on('schedulesound', (soundIndex, serverTime) => {
+            this.debug("--- Schedulesound at: ", soundIndex, serverTime);
+        });
     }
 
     getElapsedServerTime()
     {
-        return this.serverStartTime + (Date.now() + this.serverTimeOffset);
+        return this.timeSync.now() - this.serverStartTime;
     }
 
     getCurrentServerTime()
@@ -102,24 +106,20 @@ class SmartSyncClient
         //scheduler.postMessage({id: 'sync', elapsedTime: elapsedTime, timePoint: Date.now()});
     }
 
+
+    /*
+        AUDIO
+    */
     addSound(index, options)
     {
-        this.sounds[index] = new Howl({
-            src: options.src,
-            loop: options.loop,
-            html5: options.html5
-        });
+        this.sounds[index] = new Howl(options);
 
         return this.sounds[index];
     }
 
     appendSound(options)
     {
-        this.sounds.push(new Howl({
-            src: options.src,
-            loop: options.loop,
-            html5: options.html5
-        }));
+        this.sounds.push(new Howl(options));
 
         return this.sounds.length - 1;
     }
@@ -134,4 +134,8 @@ class SmartSyncClient
         this.sounds[index].play();
     }
 
+    stopSound(index)
+    {
+        this.sounds[index].stop();
+    }
 }

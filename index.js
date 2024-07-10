@@ -32,7 +32,7 @@ server.onClientMessage('test', (id, data) => {
 })
 
 server.onOSCMessageReceived((msg) => {
-  server.setStartTime();
+  
 })
 
 server.start();
