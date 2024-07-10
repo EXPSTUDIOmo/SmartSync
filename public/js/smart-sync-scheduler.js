@@ -5,7 +5,7 @@
    SmartSync Scheduler - handles high precision firing of events by spinning before an event.
 */
 
-const spinTime = 25;
+const spinTime = 35;
 let serverTimeOffset = 0;
 
 

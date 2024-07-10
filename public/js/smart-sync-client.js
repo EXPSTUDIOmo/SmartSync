@@ -39,11 +39,10 @@ class SmartSyncClient
         this.serverTimeOffset = 0;
         this.serverStartTime = 0;
         this.elapsedServerTime = 0;
-        this.timeSync = timesync.create({ server: '/timesync', interval: this.options.syncInterval || 5000});
+        this.timeSync = timesync.create({ server: '/timesync', delay: 100, interval: this.options.syncInterval || 1000});
 
         this.timeSync.on('change', (offset) => {
             this.serverTimeOffset = offset;
-            this.scheduler.postMessage({id: 'offset', offset: offset});
           });
 
         this.id = urlParams.get('id');
