@@ -2,7 +2,8 @@ let client = new SmartSyncClient({debug: true});
 client.connect();
 
 
-client.appendSound({src: [`../Samples/SS1.mp3`]});
+client.appendSound({src: [`../Samples/SS1.mp3`], loop: false});
+client.appendSound({src: [`../Samples/SS2.mp3`], loop: false});
 
 
 // let currentMode = 0;

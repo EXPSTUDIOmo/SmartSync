@@ -34,13 +34,16 @@ class SmartSyncClient
 {
     constructor(options = {})
     {
+        this.scheduler = new Worker('/js/smart-sync-scheduler.js');
         this.options = options;
         this.serverTimeOffset = 0;
         this.serverStartTime = 0;
         this.elapsedServerTime = 0;
         this.timeSync = timesync.create({ server: '/timesync', interval: this.options.syncInterval || 5000});
+
         this.timeSync.on('change', (offset) => {
             this.serverTimeOffset = offset;
+            this.scheduler.postMessage({id: 'offset', offset: offset});
           });
 
         this.id = urlParams.get('id');
@@ -53,6 +56,10 @@ class SmartSyncClient
         this.debugging = options.debug || false;
 
         this.sounds = [];
+
+        this.setupScheduler();
+
+        this.debugTimer = '';
     }
 
     connect()
@@ -73,9 +80,35 @@ class SmartSyncClient
             this.debug(`--- Server Start-Time changed : ${time} ---`);
         });
 
-        this.socket .on('schedulesound', (soundIndex, serverTime) => {
-            this.debug("--- Schedulesound at: ", soundIndex, serverTime);
+        this.socket.on('schedulesound', (soundIndex, timeToPlayFromNow) => {
+            this.startDebugTimer();
+            //this.debug("serverTime",this.getCurrentServerTime(),"offset", Date.now() - this.getCurrentServerTime(), "time til event", serverEventTime - this.getCurrentServerTime());
+            let timeToEvent = timeToPlayFromNow - this.serverTimeOffset;
+            console.log("timeTilEvent", timeToEvent, "offset", this.serverTimeOffset);
+            this.scheduler.postMessage({id:"schedulesound", index: soundIndex, timeToEvent: timeToEvent});
         });
+
+        this.socket.on('stopsound', (soundIndex) => {
+            this.sounds[soundIndex].stop();
+        })
+    }
+
+
+    setupScheduler()
+    {
+        this.scheduler.onmessage = (event) => {
+
+        switch(event.data.id)
+        {
+            case 'sound':
+                this.playSound(event.data.index);
+                this.stopDebugTimer();
+                break;
+
+            case 'done':
+                break;
+        }
+    };
     }
 
     getElapsedServerTime()
@@ -132,10 +165,21 @@ class SmartSyncClient
     playSound(index)
     {
         this.sounds[index].play();
+        console.log("serverTime: ", this.getCurrentServerTime());
     }
 
     stopSound(index)
     {
         this.sounds[index].stop();
+    }
+
+    startDebugTimer()
+    {
+        this.debugTimer = Date.now();
+    }
+
+    stopDebugTimer()
+    {
+        console.log("Debug timer measured:", Date.now() - this.debugTimer);
     }
 }
