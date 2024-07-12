@@ -54,31 +54,22 @@
     width: 100%
 }
 
-.gridbtn {
-    border: 1px solid black;
-    width: 20vw;
-    height: 20vw;
-    user-select: none; /* Prevents text selection */
-    -webkit-user-select: none; /* Safari */
-    -ms-user-select: none; /* Internet Explorer/Edge */
-    -moz-user-select: none; /* Firefox */
-}
 
 .playbtn {
     background-color: rgb(161, 161, 161);
     border: 1px solid black;
     width: 20vw;
     height: 20vw;
-    user-select: none; /* Prevents text selection */
-    -webkit-user-select: none; /* Safari */
-    -ms-user-select: none; /* Internet Explorer/Edge */
-    -moz-user-select: none; /* Firefox */
+    user-select: none; 
+    -webkit-user-select: none; 
+    -ms-user-select: none; 
+    -moz-user-select: none; 
 }
-/* Define the gradient from red to blue */
-.btn1 { background-color: rgba(255, 0, 0, 1); }     /* Red */
+
+.btn1 { background-color: rgba(255, 0, 0, 1); }    
 .btn2 { background-color: rgba(238, 0, 17, 1); }
 .btn3 { background-color: rgba(221, 0, 34, 1); }
-.btn4 { background-color: rgba(204, 0, 51, 1); }
+.btn4 { background-color: rgb(6, 5, 5); }
 .btn5 { background-color: rgba(187, 0, 68, 1); }
 .btn6 { background-color: rgba(170, 0, 85, 1); }
 .btn7 { background-color: rgba(153, 0, 102, 1); }
@@ -90,12 +81,12 @@
 .btn13 { background-color: rgba(51, 0, 204, 1); }
 .btn14 { background-color: rgba(34, 0, 221, 1); }
 .btn15 { background-color: rgba(17, 0, 238, 1); }
-.btn16 { background-color: rgba(0, 0, 255, 1); }   /* Blue */
+.btn16 { background-color: rgba(0, 0, 255, 1); }   
 
 
 .noselect {
-    user-select: none; /* Prevents text selection */
-    -webkit-user-select: none; /* Safari */
-    -ms-user-select: none; /* Internet Explorer/Edge */
-    -moz-user-select: none; /* Firefox */
+    user-select: none; 
+    -webkit-user-select: none; 
+    -ms-user-select: none; 
+    -moz-user-select: none; 
 }

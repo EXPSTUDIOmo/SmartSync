@@ -2,10 +2,9 @@ let client = new SmartSyncClient({debug: true});
 client.connect();
 
 
-for(let i = 1; i < 17; ++i)
-{
-    client.appendSound({src: [`../Samples/SS${i}.mp3`], loop: true});
-}
+/*
+    Drum Pattern Example:
+*/
 
 document.getElementById('syncbtn').onclick = () => {
     document.getElementById('startscreen').style.display = "none";
@@ -38,30 +37,6 @@ for(let i = 0; i < 16; ++i)
         button.style.border = "1px solid black";
     });
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 let currentMode = 0;

@@ -86,23 +86,7 @@ class SmartSyncClient
 
 
         this.socket.on('schedulesound', (soundIndex, timeToPlay) => {
-    
-            this.debug(`Scheduled sound ${soundIndex} at serverTime ${timeToPlay}`);
-
-            let timeUntilEvent = timeToPlay - this.getCurrentServerTime();
-            
-            if(timeUntilEvent < 1)
-            {
-                this.playSound(soundIndex);
-                return;
-            }
-
-            let localEventTime = Date.now() + timeUntilEvent;
-
-            setTimeout(() => {
-                this.waitForEvent({id: "sound", index: soundIndex, time: localEventTime});
-            }, timeUntilEvent - this.spinTime);
-
+            this.scheduleSound(soundIndex, timeToPlay);
         });
 
         this.socket.on('stopsound', (soundIndex) => {
@@ -121,7 +105,35 @@ class SmartSyncClient
             this.pauseAllSounds();
         })
 
+        this.socket.on('volume', (soundID, volume) => {
+            this.setVolume(soundID, volume);
+        });
+
+        this.socket.on('loopsound', (soundID, value) => {
+            
+            if(soundID == -1)
+            {
+                for(let sound of this.sounds)
+                    sound.loop(value);
+
+                return;
+            }
+
+            this.sounds[soundID]?.loop(value);
+        });
+
+        this.socket.on('soundfiles', (soundfiles) => {
+
+            this.sounds = [];
+
+            for(let soundfile of soundfiles)
+            {
+                this.appendSound({src: `../Samples/${soundfile}`});
+            }
+        })
+
     }
+
 
     waitForEvent(event)
     {
@@ -178,10 +190,49 @@ class SmartSyncClient
         this.elapsedServerTime = serverTime - this.serverStartTime;
     }
 
+    sendMessage(event, msg)
+    {
+        this.socket.emit(event, msg);
+    }
 
     /*
         AUDIO
     */
+
+
+
+    scheduleSound(soundIndex, timeToPlay)
+    {
+        this.debug(`Scheduled sound ${soundIndex} at serverTime ${timeToPlay}`);
+
+        let timeUntilEvent = timeToPlay - this.getCurrentServerTime();
+        
+        if(timeUntilEvent < 1)
+        {
+            this.playSound(soundIndex);
+            return;
+        }
+
+        let localEventTime = Date.now() + timeUntilEvent;
+
+        setTimeout(() => {
+            this.waitForEvent({id: "sound", index: soundIndex, time: localEventTime});
+        }, timeUntilEvent - this.spinTime);
+    }
+
+    setVolume(soundID, volume)
+    {
+        if(soundID == -1)
+        {
+            for(let sound of this.sounds)
+                sound.volume(volume);
+
+            return;
+        }
+
+        this.sounds[soundID]?.volume(volume);
+    }
+
     addSound(index, options)
     {
         this.sounds[index] = new Howl(options);
