@@ -7,32 +7,77 @@
 
 // **************** Server setup ****************************
 
-
-// if used in MaxMSP directly, use this ( WARNING : this will prevent the code from running in a non MaxMSP environment)
-/*
-  const Max = require('max-api');
-
-  Max.addHandler("example", (arguments) => {
-    doSomething()
-  });
-*/
-
+const Max = require('max-api');
 const SmartSyncServer = require('smart-sync-server');
 
-let osc = {
-  senderIP : "127.0.0.1",
-  senderPort : 5555,
-  receiverPort : 3333
+/*
+  MaxMSP Message Handlers
+*/
+
+Max.addHandler("/getelapsedtime", () => {
+  Max.outlet("/elapsedtime", server.getElapsedTime());
+});
+
+Max.addHandler("/getclients", () => {
+
+  Max.outlet("/clientdata/start");
+
+  server.clients.forEach((client, key) => {
+    Max.outlet("/clientdata", client.id, client.x, client.y, client.z);
+  });
+
+  Max.outlet("/clientdata/end");
+});
+
+Max.addHandler("/loopduration", (duration) => {
+  server.setLoopDuration(duration);
+});
+
+Max.addHandler("/setstarttime", () => {
+  server.setStartTime();
+});
+
+Max.addHandler("/schedulesound", (clientID, soundID, timeUntilEvent) => {
+  server.scheduleClientSound(clientID, soundID , timeUntilEvent);
+});
+
+Max.addHandler("/stopsound", (clientID, soundID) => {
+  server.stopClientSound(clientID, soundID);
+});
+
+Max.addHandler("/stopsounds", () => {
+  server.stopAllSounds();
+});
+
+Max.addHandler("/pausesound", (clientID, soundID) => {
+  server.pauseSound(clientID, soundID);
+});
+
+Max.addHandler("/pausesounds", () => {
+  server.pauseAllSounds();
+});
+
+
+
+
+function onClientConnect(id, x, y, z)
+{
+  Max.outlet("/clientconnect", id, x, y, z);
 }
 
-const server = new SmartSyncServer({osc: osc});
+function onClientMessage(msg)
+{
+  Max.outlet("/clientmessage", msg);
+}
 
-server.onClientMessage('test', (id, data) => {
-  console.log("test data", id, data);
-})
+function onClientDisconnect(id)
+{
+  Max.outlet("/clientdisconnect", id);
+}
 
-server.onOSCMessageReceived((msg) => {
-  
-})
+const server = new SmartSyncServer();
+
+server.onClientConnect = onClientConnect;
+server.onClientDisconnect = onClientDisconnect;
 
 server.start();
