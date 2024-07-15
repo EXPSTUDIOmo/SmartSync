@@ -59,6 +59,8 @@ class SmartSyncClient
         this.debugTimer = '';
 
         this.spinTime = 30;
+
+        this.serverLoops = false;
     }
 
     connect()
@@ -70,10 +72,15 @@ class SmartSyncClient
         this.socket.on('connected', (data) => {
             this.serverStartTime = data.startTime;
             this.serverLoopDuration = data.loopDuration;
+
+            if(this.serverLoopDuration > -1)
+            {
+                this.serverLoops = true;
+            }
+
             this.debug('Connected with the server');
             this.sync();
         });
-
 
         this.socket.on('starttime', (time) => {
             this.serverStartTime = time;
@@ -114,8 +121,10 @@ class SmartSyncClient
             if(soundID == -1)
             {
                 for(let sound of this.sounds)
+                {
                     sound.loop(value);
-
+                }
+                    
                 return;
             }
 
@@ -131,6 +140,8 @@ class SmartSyncClient
                 this.appendSound({src: `../Samples/${soundfile}`});
             }
         })
+
+
 
     }
 
@@ -242,7 +253,8 @@ class SmartSyncClient
 
     appendSound(options)
     {
-        this.sounds.push(new Howl(options));
+        let length = this.sounds.push(new Howl(options));
+        this.sounds[length - 1].loop(this.serverLoops);
 
         return this.sounds.length - 1;
     }
