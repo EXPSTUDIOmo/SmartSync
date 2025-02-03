@@ -46,7 +46,7 @@
 					"numinlets" : 1,
 					"numoutlets" : 0,
 					"patching_rect" : [ 62.0, 147.0, 193.0, 24.0 ],
-					"text" : "Commands"
+					"text" : "All Commands"
 				}
 
 			}
@@ -58,7 +58,7 @@
 					"numoutlets" : 1,
 					"outlettype" : [ "" ],
 					"patching_rect" : [ 451.0, 472.0, 50.0, 22.0 ],
-					"text" : "2480"
+					"text" : "104602"
 				}
 
 			}
@@ -165,8 +165,6 @@
 					"saved_object_attributes" : 					{
 						"autostart" : 0,
 						"defer" : 0,
-						"node_bin_path" : "",
-						"npm_bin_path" : "",
 						"watch" : 0
 					}
 ,
